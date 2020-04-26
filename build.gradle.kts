@@ -54,7 +54,12 @@ subprojects {
     version = "1.0"
 }
 
-project(":todolist-restapi") {
+project(":todolist-shared") {
 
+}
+project(":todolist-restapi") {
+    dependencies {
+        implementation(project(":todolist-shared"))
+    }
 }
 

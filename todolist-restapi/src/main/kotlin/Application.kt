@@ -1,26 +1,35 @@
 package com.soumyajit
 
-import io.ktor.application.*
-import io.ktor.response.*
-import io.ktor.request.*
-import io.ktor.routing.*
-import io.ktor.http.*
-import io.ktor.content.*
-import io.ktor.http.content.*
+import io.ktor.application.Application
+import io.ktor.application.call
+import io.ktor.application.install
+import io.ktor.features.ContentNegotiation
+import io.ktor.features.StatusPages
+import io.ktor.gson.gson
+import io.ktor.http.ContentType
+import io.ktor.response.respondText
+import io.ktor.routing.Routing
+import java.time.LocalDate
+
 
 fun main(args: Array<String>): Unit = io.ktor.server.cio.EngineMain.main(args)
 
 @Suppress("unused") // Referenced in application.conf
 @kotlin.jvm.JvmOverloads
 fun Application.module(testing: Boolean = false) {
-    routing {
-        get("/") {
-            call.respondText("HELLO WORLD AGAIN!", contentType = ContentType.Text.Plain)
+    install(Routing) {
+        todoApi()
+    }
+    install(StatusPages) {
+        this.exception<Throwable> { e ->
+            call.respondText(e.localizedMessage, ContentType.Text.Plain)
+            throw e
         }
-
-        // Static feature. Try to access `/static/ktor_logo.svg`
-        static("/static") {
-            resources("static")
+    }
+    install(ContentNegotiation) {
+        gson {
+            setPrettyPrinting()
+            registerTypeAdapter(LocalDate::class.java ,LocalDateAdapter())
         }
     }
 }
