@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.soumyajit.GetTodosSpec" tests="7" skipped="0" failures="0" errors="0" timestamp="2020-05-03T11:41:28" hostname="Soumyajits-MBP" time="0.267">
+  <properties/>
+  <testcase name="Should be OK to get the list of Todos" classname="com.soumyajit.GetTodosSpec" time="0.233"/>
+  <testcase name="should get the todos" classname="com.soumyajit.GetTodosSpec" time="0.004"/>
+  <testcase name="should create the todos" classname="com.soumyajit.GetTodosSpec" time="0.022"/>
+  <testcase name="should update the todos" classname="com.soumyajit.GetTodosSpec" time="0.004"/>
+  <testcase name="should delete the todos" classname="com.soumyajit.GetTodosSpec" time="0.001"/>
+  <testcase name="should get the todo if the id is set" classname="com.soumyajit.GetTodosSpec" time="0.002"/>
+  <testcase name="should return an error if the id is invalid" classname="com.soumyajit.GetTodosSpec" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

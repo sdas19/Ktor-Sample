@@ -19,7 +19,9 @@ fun main(args: Array<String>): Unit = io.ktor.server.cio.EngineMain.main(args)
 @kotlin.jvm.JvmOverloads
 fun Application.module(testing: Boolean = false) {
     install(Routing) {
-        trace { application.log.trace(it.buildText()) }
+        if(!testing) {
+            trace { application.log.trace(it.buildText()) }
+        }
         todoApi()
     }
     install(StatusPages) {
