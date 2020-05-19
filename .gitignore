@@ -6,3 +6,6 @@
 *.ipr
 *.iws
 .DS_Store
+/repository/build.gradle.kts
+/repository/gradle.properties
+/repository/src/main/kotlin/TodoItem.kt

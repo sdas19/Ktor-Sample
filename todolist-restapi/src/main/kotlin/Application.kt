@@ -10,19 +10,37 @@ import io.ktor.gson.gson
 import io.ktor.http.ContentType
 import io.ktor.response.respondText
 import io.ktor.routing.Routing
+import org.koin.core.context.GlobalContext
+import org.koin.core.context.startKoin
+import org.koin.dsl.module
+import org.koin.ktor.ext.inject
 import java.time.LocalDate
 
 
-fun main(args: Array<String>): Unit = io.ktor.server.cio.EngineMain.main(args)
+val todoAppAppModule = module {
+    single<TodoService> { TodoServiceImpl(get()) }
+    single<TodoListRepository> { TodoListRepositorySql() }
+}
+
+fun main(args: Array<String>) {
+    startKoin { modules(todoAppAppModule) }
+    io.ktor.server.cio.EngineMain.main(args)
+}
 
 @Suppress("unused") // Referenced in application.conf
 @kotlin.jvm.JvmOverloads
 fun Application.module(testing: Boolean = false) {
+    val todoService : TodoService by inject()
+    moduleWithDependencies(todoService)
+}
+
+fun Application.moduleWithDependencies(todoService: TodoService) {
+
+    /*if(!testing) {
+        trace { application.log.trace(it.buildText()) }
+    }*/
     install(Routing) {
-        if(!testing) {
-            trace { application.log.trace(it.buildText()) }
-        }
-        todoApi()
+        todoApi(todoService)
     }
     install(StatusPages) {
         this.exception<Throwable> { e ->
@@ -38,4 +56,3 @@ fun Application.module(testing: Boolean = false) {
         }
     }
 }
-
