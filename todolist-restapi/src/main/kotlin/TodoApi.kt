@@ -1,76 +1,73 @@
 package com.soumyajit
 
+import com.google.gson.Gson
 import io.ktor.application.call
 import io.ktor.http.HttpStatusCode
 import io.ktor.request.receive
+import io.ktor.request.receiveText
 import io.ktor.response.respond
 import io.ktor.routing.*
-import java.time.LocalDate
 
 fun Routing.todoApi(todoService: TodoService) {
+
     route("/api") {
+
+        post("/todos") {
+            val todos = call.receive<Array<TodoItem>>()
+            todoService.insertTodos(todos.toList())
+            call.respond(HttpStatusCode.Created, todos)
+        }
+
         get("/todos") {
             val todos = todoService.getAll()
             call.respond(todos)
         }
-        get("/todos/{id}") {
-            val id = call.parameters["id"]
-            if (id == null) {
+
+        get("/todos/{assignee}") {
+            val assignee = call.parameters["assignee"]
+            if (assignee == null) {
                 call.respond(HttpStatusCode.BadRequest)
                 return@get
             }
             try {
-                val todo = todoService.getTodo(id.toInt())
-                call.respond(todo)
+                val result = todoService.getTodoByAssignee(assignee)
+                call.respond(result)
             } catch (e: Throwable) {
                 call.respond(HttpStatusCode.NotFound)
             }
         }
-        post("/todos") {
-            val todo = call.receive<TodoItem>()
-            todoService.create(todo)
-            /*val newTodo = TodoItem(
-                todos.size + 1,
-                todo.title,
-                todo.details,
-                todo.assignedTo,
-                todo.dueDate,
-                todo.importance
-            )
-            todos = todos + newTodo*/
-            call.respond(HttpStatusCode.Created, todos)
-        }
+
         put("/todos/{id}") {
-            val id = call.parameters["id"] ?: throw IllegalArgumentException("Missing Id")
-            /*if (id == null) {
+            val id = call.parameters["id"]
+            if (id == null) {
                 call.respond(HttpStatusCode.BadRequest)
                 return@put
             }
-            val foundItem = todos.getOrNull(id.toInt())
-            if (foundItem == null) {
+            val todo = call.receive(TodoItem::class)
+            val result = todoService.update(id, todo)
+            if (!result) {
                 call.respond(HttpStatusCode.NotFound)
                 return@put
-            }*/
-            val todo = call.receive<TodoItem>()
-            todoService.update(id.toInt(), todo)
-            /*todos = todos.filter { it.id != todo.id }
-            todos = todos + todo*/
-            call.respond(HttpStatusCode.NoContent)
+            }
+            call.respond(HttpStatusCode.OK)
         }
 
         delete("/todos/{id}") {
-            val id = call.parameters["id"] ?: throw IllegalArgumentException("Missing Id")
-            /*if (id == null) {
+            val id = call.parameters["id"]
+            if (id == null) {
                 call.respond(HttpStatusCode.BadRequest)
                 return@delete
             }
-            val foundItem = todos.getOrNull(id.toInt())
-            if (foundItem == null) {
+            val result = todoService.delete(id)
+            if (!result) {
                 call.respond(HttpStatusCode.NotFound)
                 return@delete
             }
-            todos = todos.filter { it.id != id.toInt() }*/
-            todoService.delete(id.toInt())
+            call.respond(HttpStatusCode.NoContent)
+        }
+
+        delete("/todos") {
+            todoService.drop()
             call.respond(HttpStatusCode.NoContent)
         }
     }

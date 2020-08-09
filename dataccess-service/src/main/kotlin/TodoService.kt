@@ -1,9 +1,10 @@
 package com.soumyajit
 
 interface TodoService {
+    fun insertTodos(data: List<TodoItem>)
     fun getAll(): List<TodoItem>
-    fun getTodo(id: Int): TodoItem
-    fun delete(id: Int): Boolean
-    fun create(todo: TodoItem): Boolean
-    fun update(id: Int, todo: TodoItem): Boolean
+    fun getTodoByAssignee(assignee: String): List<TodoItem>
+    fun update(id: String, todo: TodoItem): Boolean
+    fun delete(id: String): Boolean
+    fun drop()
 }

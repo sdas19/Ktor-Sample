@@ -1,5 +1,10 @@
 package com.soumyajit
 
+import com.mongodb.MongoClient
+import com.mongodb.MongoClientOptions
+import com.mongodb.MongoCredential
+import com.mongodb.ServerAddress
+import com.mongodb.client.MongoDatabase
 import io.ktor.application.Application
 import io.ktor.application.call
 import io.ktor.application.install
@@ -19,8 +24,21 @@ import java.time.LocalDate
 
 val todoAppAppModule = module {
     single<TodoService> { TodoServiceImpl(get()) }
-    single<TodoListRepository> { TodoListRepositorySql() }
+    single<TodoListRepository> { TodoListRepositorySql(get()) }
+    single<MongoDatabase> { getDataBase() }
 }
+
+private fun getDataBase(): MongoDatabase {
+    val client = getMongoClient()
+    return client.getDatabase("todos-db")
+}
+
+private fun getMongoClient() = MongoClient(
+    ServerAddress(
+        "127.0.0.1",
+        27017
+    )
+)
 
 fun main(args: Array<String>) {
     startKoin { modules(todoAppAppModule) }
@@ -30,7 +48,7 @@ fun main(args: Array<String>) {
 @Suppress("unused") // Referenced in application.conf
 @kotlin.jvm.JvmOverloads
 fun Application.module(testing: Boolean = false) {
-    val todoService : TodoService by inject()
+    val todoService: TodoService by inject()
     moduleWithDependencies(todoService)
 }
 

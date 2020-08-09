@@ -1,9 +1,11 @@
 package com.soumyajit
 
+import org.bson.codecs.pojo.annotations.BsonId
 import java.time.LocalDate
+import java.util.*
 
 data class TodoItem(
-    val id : Int,
+    @BsonId var id: String = UUID.randomUUID().toString(),
     val title: String,
     val details: String,
     val assignedTo: String,
