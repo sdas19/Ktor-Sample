@@ -1,21 +1,18 @@
 package com.soumyajit
 
 import com.mongodb.MongoClient
-import com.mongodb.MongoClientOptions
-import com.mongodb.MongoCredential
+import com.mongodb.MongoClientURI
 import com.mongodb.ServerAddress
 import com.mongodb.client.MongoDatabase
 import io.ktor.application.Application
 import io.ktor.application.call
 import io.ktor.application.install
-import io.ktor.application.log
 import io.ktor.features.ContentNegotiation
 import io.ktor.features.StatusPages
 import io.ktor.gson.gson
 import io.ktor.http.ContentType
 import io.ktor.response.respondText
 import io.ktor.routing.Routing
-import org.koin.core.context.GlobalContext
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
 import org.koin.ktor.ext.inject
@@ -29,7 +26,7 @@ val todoAppAppModule = module {
 }
 
 private fun getDataBase(): MongoDatabase {
-    val client = getMongoClient()
+    val client = mongoClientWithUri()
     return client.getDatabase("todos-db")
 }
 
@@ -38,6 +35,10 @@ private fun getMongoClient() = MongoClient(
         "127.0.0.1",
         27017
     )
+)
+
+private fun mongoClientWithUri() = MongoClient(
+    MongoClientURI("mongodb://127.0.0.1:27017")
 )
 
 fun main(args: Array<String>) {
