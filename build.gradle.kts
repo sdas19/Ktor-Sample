@@ -1,3 +1,5 @@
+import org.gradle.jvm.tasks.Jar
+
 val logback_version: String by project
 val kotlin_version: String by project
 val spek_version: String by project
@@ -20,6 +22,7 @@ buildscript {
 
 plugins {
     java
+    application
 }
 
 allprojects {
@@ -82,3 +85,24 @@ project(":todolist-restapi") {
     }
 }
 
+application {
+    applicationName = "Ktor-Sample"
+    mainClassName = "io.ktor.server.cio.EngineMain"
+}
+
+tasks {
+    withType<Jar> {
+        manifest {
+            attributes(mapOf("Main-Class" to application.mainClassName))
+        }
+        val version = "1.0-SNAPSHOT"
+        archiveName = "${application.applicationName}-$version.jar"
+        from(configurations.runtime.get().map { if (it.isDirectory) it else zipTree(it) })
+    }
+
+    val stage by registering(DefaultTask::class)
+    stage {
+        dependsOn("build")
+        dependsOn("clean")
+    }
+}

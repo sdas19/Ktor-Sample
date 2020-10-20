@@ -3,6 +3,7 @@ package com.soumyajit
 import com.mongodb.MongoClient
 import com.mongodb.MongoClientURI
 import com.mongodb.ServerAddress
+import com.mongodb.client.MongoClients
 import com.mongodb.client.MongoDatabase
 import io.ktor.application.Application
 import io.ktor.application.call
@@ -16,13 +17,15 @@ import io.ktor.routing.Routing
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
 import org.koin.ktor.ext.inject
+import java.net.URLEncoder
+import java.nio.charset.StandardCharsets
 import java.time.LocalDate
 
 
 val todoAppAppModule = module {
     single<TodoService> { TodoServiceImpl(get()) }
     single<TodoListRepository> { TodoListRepositorySql(get()) }
-    single<MongoDatabase> { getDataBase() }
+    single<MongoDatabase> { getMongoDatabaseAtlas() }
 }
 
 private fun getDataBase(): MongoDatabase {
@@ -40,6 +43,18 @@ private fun getMongoClient() = MongoClient(
 private fun mongoClientWithUri() = MongoClient(
     MongoClientURI("mongodb://127.0.0.1:27017")
 )
+
+private fun getMongoDatabaseAtlas() =
+    MongoClients.create(
+        getMongoClientUrlAtlas()
+    ).getDatabase("todos-db")
+
+private fun getMongoClientUrlAtlas(): String {
+    val fileName = "mongo-atlas-configuration.json"
+    return "mongodb+srv://test-user-ktor:" +
+            URLEncoder.encode("pahGkrpCkMi6g6Qe", StandardCharsets.UTF_8.toString()) +
+            "@test-cluster.szqba.mongodb.net/todos-db?retryWrites=true&w=majority"
+}
 
 fun main(args: Array<String>) {
     startKoin { modules(todoAppAppModule) }
