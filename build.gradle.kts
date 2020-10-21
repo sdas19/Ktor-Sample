@@ -95,10 +95,6 @@ tasks {
     val fatJar = task("createJar", type = Jar::class) {
         val version = "1.0-SNAPSHOT"
         archiveName = "${application.applicationName}-$version.jar"
-        manifest {
-            attributes["Version"] = version
-            attributes["Main-Class"] = application.mainClassName
-        }
         from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
         destinationDirectory.set(project.rootDir)
     }
