@@ -87,7 +87,7 @@ project(":todolist-restapi") {
 
 application {
     applicationName = "Ktor-Sample"
-    mainClassName = "io.ktor.server.cio.EngineMain"
+    mainClassName = "Application.kt"
 }
 
 tasks {
