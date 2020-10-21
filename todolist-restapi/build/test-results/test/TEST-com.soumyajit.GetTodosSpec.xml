@@ -1,59 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.soumyajit.GetTodosSpec" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-10-21T07:34:18" hostname="Soumyajit.Das" time="0.718">
+<testsuite name="com.soumyajit.GetTodosSpec" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-10-21T12:42:49" hostname="Soumyajit.Das" time="0.694">
   <properties/>
-  <testcase name="Should be OK to get the list of Todos" classname="com.soumyajit.GetTodosSpec" time="0.676"/>
-  <testcase name="should get the todos" classname="com.soumyajit.GetTodosSpec" time="0.02"/>
-  <testcase name="should delete the todos" classname="com.soumyajit.GetTodosSpec" time="0.022"/>
-  <system-out><![CDATA[2020-10-21 13:04:19.073 [Test worker] DEBUG io.mockk.impl.stub.CommonClearer - Clearing [TodoService(#1)] mocks ClearOptions(answers=true, recordedCalls=true, childMocks=true, verificationMarks=true, exclusionRules=true)
-2020-10-21 13:04:19.076 [Test worker] TRACE i.m.i.recording.CommonCallRecorder - Starting stubbing
-2020-10-21 13:04:19.126 [Test worker] TRACE i.m.i.i.AbstractMockFactory - Building proxy for List hashcode=7bb700e0
-2020-10-21 13:04:19.126 [Test worker] TRACE i.m.p.j.t.JvmInlineInstrumentation - Retransforming [Ljava.lang.Class;@64c9834b
-2020-10-21 13:04:19.243 [Test worker] TRACE io.mockk.proxy.jvm.ProxyMaker - Building subclass proxy for interface java.util.List with additional interfaces []
-2020-10-21 13:04:19.305 [Test worker] TRACE io.mockk.proxy.jvm.ProxyMaker - Instantiating proxy for interface java.util.List via instantiator
-2020-10-21 13:04:19.305 [Test worker] TRACE i.m.proxy.jvm.ObjenesisInstantiator - Skipping instantiation subsclassing class io.mockk.renamed.java.util.List$Subclass1 because class is not abstract.
-2020-10-21 13:04:19.305 [Test worker] TRACE i.m.proxy.jvm.ObjenesisInstantiator - Creating new empty instance of class io.mockk.renamed.java.util.List$Subclass1
-2020-10-21 13:04:19.315 [Test worker] TRACE i.m.i.r.SignatureMatcherDetector - Matcher map: {}
-2020-10-21 13:04:19.317 [Test worker] TRACE i.m.i.r.SignatureMatcherDetector - Processing call #0: getAll()
-2020-10-21 13:04:19.322 [Test worker] TRACE i.m.i.r.SignatureMatcherDetector - Built matcher: TodoService(#1).getAll())
-2020-10-21 13:04:19.326 [Test worker] TRACE i.m.impl.recording.PermanentMocker - Child search key: TodoService(#1).getAll())
-2020-10-21 13:04:19.328 [Test worker] DEBUG i.m.i.i.AbstractMockFactory - Creating mockk for List name=child of #1#2
-2020-10-21 13:04:19.328 [Test worker] TRACE i.m.i.i.AbstractMockFactory - Building proxy for List hashcode=7bb700e0
-2020-10-21 13:04:19.329 [Test worker] TRACE io.mockk.proxy.jvm.ProxyMaker - Building subclass proxy for interface java.util.List with additional interfaces []
-2020-10-21 13:04:19.329 [Test worker] TRACE io.mockk.proxy.jvm.ProxyMaker - Instantiating proxy for interface java.util.List via instantiator
-2020-10-21 13:04:19.329 [Test worker] TRACE i.m.proxy.jvm.ObjenesisInstantiator - Skipping instantiation subsclassing class io.mockk.renamed.java.util.List$Subclass1 because class is not abstract.
-2020-10-21 13:04:19.329 [Test worker] TRACE i.m.proxy.jvm.ObjenesisInstantiator - Creating new empty instance of class io.mockk.renamed.java.util.List$Subclass1
-2020-10-21 13:04:19.330 [Test worker] TRACE i.m.impl.recording.PermanentMocker - Mocked permanently: TodoService(#1).all
-2020-10-21 13:04:19.337 [Test worker] TRACE i.m.i.r.s.StubbingAwaitingAnswerState - Done stubbing. Still accepting additional answers
-2020-10-21 13:04:19.440 [DefaultDispatcher-worker-1 @request#1] DEBUG i.m.i.r.states.AnsweringState - Answering [TodoItem(id=5ba2400c-544c-4ee6-8e75-0a0ba35b4738, title=Add database processing, details=Add backend support to this code, assignedTo=Kevin, dueDate=2018-12-18, importance=HIGH), TodoItem(id=5ba2400c-544c-4ee6-8e75-0a0ba35b4738, title=Add database processing, details=Add backend support to this code, assignedTo=Kevin, dueDate=2018-12-18, importance=HIGH)] on TodoService(#1).getAll()
-2020-10-21 13:04:19.571 [Test worker] DEBUG io.mockk.impl.stub.CommonClearer - Clearing [TodoService(#1)] mocks ClearOptions(answers=true, recordedCalls=true, childMocks=true, verificationMarks=true, exclusionRules=true)
-2020-10-21 13:04:19.572 [Test worker] TRACE i.m.i.recording.CommonCallRecorder - Starting stubbing
-2020-10-21 13:04:19.572 [Test worker] TRACE i.m.i.i.AbstractMockFactory - Building proxy for List hashcode=7bb700e0
-2020-10-21 13:04:19.572 [Test worker] TRACE io.mockk.proxy.jvm.ProxyMaker - Building subclass proxy for interface java.util.List with additional interfaces []
-2020-10-21 13:04:19.576 [Test worker] TRACE io.mockk.proxy.jvm.ProxyMaker - Instantiating proxy for interface java.util.List via instantiator
-2020-10-21 13:04:19.577 [Test worker] TRACE i.m.proxy.jvm.ObjenesisInstantiator - Skipping instantiation subsclassing class io.mockk.renamed.java.util.List$Subclass1 because class is not abstract.
-2020-10-21 13:04:19.577 [Test worker] TRACE i.m.proxy.jvm.ObjenesisInstantiator - Creating new empty instance of class io.mockk.renamed.java.util.List$Subclass1
-2020-10-21 13:04:19.577 [Test worker] TRACE i.m.i.r.SignatureMatcherDetector - Matcher map: {}
-2020-10-21 13:04:19.577 [Test worker] TRACE i.m.i.r.SignatureMatcherDetector - Processing call #0: getAll()
-2020-10-21 13:04:19.577 [Test worker] TRACE i.m.i.r.SignatureMatcherDetector - Built matcher: TodoService(#1).getAll())
-2020-10-21 13:04:19.578 [Test worker] TRACE i.m.impl.recording.PermanentMocker - Child search key: TodoService(#1).getAll())
-2020-10-21 13:04:19.578 [Test worker] DEBUG i.m.i.i.AbstractMockFactory - Creating mockk for List name=child of #1#3
-2020-10-21 13:04:19.578 [Test worker] TRACE i.m.i.i.AbstractMockFactory - Building proxy for List hashcode=7bb700e0
-2020-10-21 13:04:19.578 [Test worker] TRACE io.mockk.proxy.jvm.ProxyMaker - Building subclass proxy for interface java.util.List with additional interfaces []
-2020-10-21 13:04:19.578 [Test worker] TRACE io.mockk.proxy.jvm.ProxyMaker - Instantiating proxy for interface java.util.List via instantiator
-2020-10-21 13:04:19.578 [Test worker] TRACE i.m.proxy.jvm.ObjenesisInstantiator - Skipping instantiation subsclassing class io.mockk.renamed.java.util.List$Subclass1 because class is not abstract.
-2020-10-21 13:04:19.578 [Test worker] TRACE i.m.proxy.jvm.ObjenesisInstantiator - Creating new empty instance of class io.mockk.renamed.java.util.List$Subclass1
-2020-10-21 13:04:19.579 [Test worker] TRACE i.m.impl.recording.PermanentMocker - Mocked permanently: TodoService(#1).all
-2020-10-21 13:04:19.579 [Test worker] TRACE i.m.i.r.s.StubbingAwaitingAnswerState - Done stubbing. Still accepting additional answers
-2020-10-21 13:04:19.580 [DefaultDispatcher-worker-3 @request#5] DEBUG i.m.i.r.states.AnsweringState - Answering [TodoItem(id=5ba2400c-544c-4ee6-8e75-0a0ba35b4738, title=Add database processing, details=Add backend support to this code, assignedTo=Kevin, dueDate=2018-12-18, importance=HIGH), TodoItem(id=5ba2400c-544c-4ee6-8e75-0a0ba35b4738, title=Add database processing, details=Add backend support to this code, assignedTo=Kevin, dueDate=2018-12-18, importance=HIGH)] on TodoService(#1).getAll()
-2020-10-21 13:04:19.591 [Test worker] DEBUG io.mockk.impl.stub.CommonClearer - Clearing [TodoService(#1)] mocks ClearOptions(answers=true, recordedCalls=true, childMocks=true, verificationMarks=true, exclusionRules=true)
-2020-10-21 13:04:19.592 [Test worker] TRACE i.m.i.recording.CommonCallRecorder - Starting stubbing
-2020-10-21 13:04:19.596 [Test worker] TRACE i.m.i.r.SignatureMatcherDetector - Matcher map: {[-441a0adc94135aa9]=any()}
-2020-10-21 13:04:19.596 [Test worker] TRACE i.m.i.r.SignatureMatcherDetector - Processing call #0: delete(String)
-2020-10-21 13:04:19.597 [Test worker] TRACE i.m.i.r.SignatureMatcherDetector - Signature for 0 argument of delete(String): [-441a0adc94135aa9]
-2020-10-21 13:04:19.598 [Test worker] TRACE i.m.i.r.SignatureMatcherDetector - Built matcher: TodoService(#1).delete(any()))
-2020-10-21 13:04:19.599 [Test worker] TRACE i.m.impl.recording.PermanentMocker - Mocked permanently: TodoService(#1).delete(any())
-2020-10-21 13:04:19.600 [Test worker] TRACE i.m.i.r.s.StubbingAwaitingAnswerState - Done stubbing. Still accepting additional answers
-2020-10-21 13:04:19.608 [DefaultDispatcher-worker-1 @request#9] DEBUG i.m.i.r.states.AnsweringState - Answering true on TodoService(#1).delete(1)
+  <testcase name="Should be OK to get the list of Todos" classname="com.soumyajit.GetTodosSpec" time="0.658"/>
+  <testcase name="should get the todos" classname="com.soumyajit.GetTodosSpec" time="0.013"/>
+  <testcase name="should delete the todos" classname="com.soumyajit.GetTodosSpec" time="0.023"/>
+  <system-out><![CDATA[2020-10-21 18:12:49.614 [Test worker] DEBUG io.mockk.impl.stub.CommonClearer - Clearing [TodoService(#1)] mocks ClearOptions(answers=true, recordedCalls=true, childMocks=true, verificationMarks=true, exclusionRules=true)
+2020-10-21 18:12:49.618 [Test worker] TRACE i.m.i.recording.CommonCallRecorder - Starting stubbing
+2020-10-21 18:12:49.666 [Test worker] TRACE i.m.i.i.AbstractMockFactory - Building proxy for List hashcode=64fc79ed
+2020-10-21 18:12:49.666 [Test worker] TRACE i.m.p.j.t.JvmInlineInstrumentation - Retransforming [Ljava.lang.Class;@56ee0419
+2020-10-21 18:12:49.776 [Test worker] TRACE io.mockk.proxy.jvm.ProxyMaker - Building subclass proxy for interface java.util.List with additional interfaces []
+2020-10-21 18:12:49.840 [Test worker] TRACE io.mockk.proxy.jvm.ProxyMaker - Instantiating proxy for interface java.util.List via instantiator
+2020-10-21 18:12:49.840 [Test worker] TRACE i.m.proxy.jvm.ObjenesisInstantiator - Skipping instantiation subsclassing class io.mockk.renamed.java.util.List$Subclass1 because class is not abstract.
+2020-10-21 18:12:49.840 [Test worker] TRACE i.m.proxy.jvm.ObjenesisInstantiator - Creating new empty instance of class io.mockk.renamed.java.util.List$Subclass1
+2020-10-21 18:12:49.847 [Test worker] TRACE i.m.i.r.SignatureMatcherDetector - Matcher map: {}
+2020-10-21 18:12:49.849 [Test worker] TRACE i.m.i.r.SignatureMatcherDetector - Processing call #0: getAll()
+2020-10-21 18:12:49.857 [Test worker] TRACE i.m.i.r.SignatureMatcherDetector - Built matcher: TodoService(#1).getAll())
+2020-10-21 18:12:49.861 [Test worker] TRACE i.m.impl.recording.PermanentMocker - Child search key: TodoService(#1).getAll())
+2020-10-21 18:12:49.863 [Test worker] DEBUG i.m.i.i.AbstractMockFactory - Creating mockk for List name=child of #1#2
+2020-10-21 18:12:49.863 [Test worker] TRACE i.m.i.i.AbstractMockFactory - Building proxy for List hashcode=64fc79ed
+2020-10-21 18:12:49.864 [Test worker] TRACE io.mockk.proxy.jvm.ProxyMaker - Building subclass proxy for interface java.util.List with additional interfaces []
+2020-10-21 18:12:49.864 [Test worker] TRACE io.mockk.proxy.jvm.ProxyMaker - Instantiating proxy for interface java.util.List via instantiator
+2020-10-21 18:12:49.864 [Test worker] TRACE i.m.proxy.jvm.ObjenesisInstantiator - Skipping instantiation subsclassing class io.mockk.renamed.java.util.List$Subclass1 because class is not abstract.
+2020-10-21 18:12:49.864 [Test worker] TRACE i.m.proxy.jvm.ObjenesisInstantiator - Creating new empty instance of class io.mockk.renamed.java.util.List$Subclass1
+2020-10-21 18:12:49.866 [Test worker] TRACE i.m.impl.recording.PermanentMocker - Mocked permanently: TodoService(#1).all
+2020-10-21 18:12:49.870 [Test worker] TRACE i.m.i.r.s.StubbingAwaitingAnswerState - Done stubbing. Still accepting additional answers
+2020-10-21 18:12:49.979 [DefaultDispatcher-worker-1 @request#1] DEBUG i.m.i.r.states.AnsweringState - Answering [TodoItem(id=94291b6b-2a8a-4635-850e-78ead1bec72f, title=Add database processing, details=Add backend support to this code, assignedTo=Kevin, dueDate=2018-12-18, importance=HIGH), TodoItem(id=94291b6b-2a8a-4635-850e-78ead1bec72f, title=Add database processing, details=Add backend support to this code, assignedTo=Kevin, dueDate=2018-12-18, importance=HIGH)] on TodoService(#1).getAll()
+2020-10-21 18:12:50.093 [Test worker] DEBUG io.mockk.impl.stub.CommonClearer - Clearing [TodoService(#1)] mocks ClearOptions(answers=true, recordedCalls=true, childMocks=true, verificationMarks=true, exclusionRules=true)
+2020-10-21 18:12:50.094 [Test worker] TRACE i.m.i.recording.CommonCallRecorder - Starting stubbing
+2020-10-21 18:12:50.094 [Test worker] TRACE i.m.i.i.AbstractMockFactory - Building proxy for List hashcode=64fc79ed
+2020-10-21 18:12:50.094 [Test worker] TRACE io.mockk.proxy.jvm.ProxyMaker - Building subclass proxy for interface java.util.List with additional interfaces []
+2020-10-21 18:12:50.094 [Test worker] TRACE io.mockk.proxy.jvm.ProxyMaker - Instantiating proxy for interface java.util.List via instantiator
+2020-10-21 18:12:50.094 [Test worker] TRACE i.m.proxy.jvm.ObjenesisInstantiator - Skipping instantiation subsclassing class io.mockk.renamed.java.util.List$Subclass1 because class is not abstract.
+2020-10-21 18:12:50.095 [Test worker] TRACE i.m.proxy.jvm.ObjenesisInstantiator - Creating new empty instance of class io.mockk.renamed.java.util.List$Subclass1
+2020-10-21 18:12:50.095 [Test worker] TRACE i.m.i.r.SignatureMatcherDetector - Matcher map: {}
+2020-10-21 18:12:50.095 [Test worker] TRACE i.m.i.r.SignatureMatcherDetector - Processing call #0: getAll()
+2020-10-21 18:12:50.095 [Test worker] TRACE i.m.i.r.SignatureMatcherDetector - Built matcher: TodoService(#1).getAll())
+2020-10-21 18:12:50.095 [Test worker] TRACE i.m.impl.recording.PermanentMocker - Child search key: TodoService(#1).getAll())
+2020-10-21 18:12:50.095 [Test worker] DEBUG i.m.i.i.AbstractMockFactory - Creating mockk for List name=child of #1#3
+2020-10-21 18:12:50.095 [Test worker] TRACE i.m.i.i.AbstractMockFactory - Building proxy for List hashcode=64fc79ed
+2020-10-21 18:12:50.096 [Test worker] TRACE io.mockk.proxy.jvm.ProxyMaker - Building subclass proxy for interface java.util.List with additional interfaces []
+2020-10-21 18:12:50.096 [Test worker] TRACE io.mockk.proxy.jvm.ProxyMaker - Instantiating proxy for interface java.util.List via instantiator
+2020-10-21 18:12:50.096 [Test worker] TRACE i.m.proxy.jvm.ObjenesisInstantiator - Skipping instantiation subsclassing class io.mockk.renamed.java.util.List$Subclass1 because class is not abstract.
+2020-10-21 18:12:50.096 [Test worker] TRACE i.m.proxy.jvm.ObjenesisInstantiator - Creating new empty instance of class io.mockk.renamed.java.util.List$Subclass1
+2020-10-21 18:12:50.096 [Test worker] TRACE i.m.impl.recording.PermanentMocker - Mocked permanently: TodoService(#1).all
+2020-10-21 18:12:50.096 [Test worker] TRACE i.m.i.r.s.StubbingAwaitingAnswerState - Done stubbing. Still accepting additional answers
+2020-10-21 18:12:50.097 [DefaultDispatcher-worker-2 @request#5] DEBUG i.m.i.r.states.AnsweringState - Answering [TodoItem(id=94291b6b-2a8a-4635-850e-78ead1bec72f, title=Add database processing, details=Add backend support to this code, assignedTo=Kevin, dueDate=2018-12-18, importance=HIGH), TodoItem(id=94291b6b-2a8a-4635-850e-78ead1bec72f, title=Add database processing, details=Add backend support to this code, assignedTo=Kevin, dueDate=2018-12-18, importance=HIGH)] on TodoService(#1).getAll()
+2020-10-21 18:12:50.106 [Test worker] DEBUG io.mockk.impl.stub.CommonClearer - Clearing [TodoService(#1)] mocks ClearOptions(answers=true, recordedCalls=true, childMocks=true, verificationMarks=true, exclusionRules=true)
+2020-10-21 18:12:50.107 [Test worker] TRACE i.m.i.recording.CommonCallRecorder - Starting stubbing
+2020-10-21 18:12:50.110 [Test worker] TRACE i.m.i.r.SignatureMatcherDetector - Matcher map: {[-19b5800c31d0d60d]=any()}
+2020-10-21 18:12:50.111 [Test worker] TRACE i.m.i.r.SignatureMatcherDetector - Processing call #0: delete(String)
+2020-10-21 18:12:50.111 [Test worker] TRACE i.m.i.r.SignatureMatcherDetector - Signature for 0 argument of delete(String): [-19b5800c31d0d60d]
+2020-10-21 18:12:50.112 [Test worker] TRACE i.m.i.r.SignatureMatcherDetector - Built matcher: TodoService(#1).delete(any()))
+2020-10-21 18:12:50.114 [Test worker] TRACE i.m.impl.recording.PermanentMocker - Mocked permanently: TodoService(#1).delete(any())
+2020-10-21 18:12:50.114 [Test worker] TRACE i.m.i.r.s.StubbingAwaitingAnswerState - Done stubbing. Still accepting additional answers
+2020-10-21 18:12:50.125 [DefaultDispatcher-worker-3 @request#9] DEBUG i.m.i.r.states.AnsweringState - Answering true on TodoService(#1).delete(1)
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

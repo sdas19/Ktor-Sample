@@ -8,6 +8,7 @@ val kluent_version: String by project
 val mockk_version: String by project
 val koin_version : String by project
 val mongo_version : String by project
+val ktor_version : String by project
 
 buildscript {
     repositories {
@@ -44,6 +45,7 @@ allprojects {
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version")
         implementation("org.koin:koin-ktor:$koin_version")
         implementation ("org.mongodb:mongodb-driver:$mongo_version")
+        implementation("io.ktor:ktor-server-cio:$ktor_version")
 
         testImplementation("org.amshove.kluent:kluent:$kluent_version")
         testImplementation("org.spekframework.spek2:spek-dsl-jvm:$spek_version")
