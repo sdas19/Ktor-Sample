@@ -1,1 +1,1 @@
-web: java -cp target/dependency/*:target/classes/ org.jetbrains.ktor.netty.DevelopmentHost
+web: java -jar build/libs/Ktor-Sample-1.0-SNAPSHOT.jar
