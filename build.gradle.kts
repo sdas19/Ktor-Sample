@@ -91,13 +91,20 @@ application {
 }
 
 tasks {
-    withType<Jar> {
-        manifest {
-            attributes(mapOf("Main-Class" to application.mainClassName))
-        }
+
+    val fatJar = task("createJar", type = Jar::class) {
         val version = "1.0-SNAPSHOT"
         archiveName = "${application.applicationName}-$version.jar"
-        from(configurations.runtime.get().map { if (it.isDirectory) it else zipTree(it) })
+        manifest {
+            attributes["Version"] = version
+            attributes["Main-Class"] = application.mainClassName
+        }
+        from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
+        destinationDirectory.set(project.rootDir)
+    }
+
+    "build" {
+        dependsOn(fatJar)
     }
 
     val stage by registering(DefaultTask::class)
