@@ -1,4 +1,5 @@
 import org.gradle.jvm.tasks.Jar
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 val logback_version: String by project
 val kotlin_version: String by project
@@ -18,12 +19,14 @@ buildscript {
     }
     dependencies {
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.41")
+        classpath("com.github.jengelman.gradle.plugins:shadow:5.1.0")
     }
 }
 
 plugins {
     java
     application
+    id("com.github.johnrengelman.shadow") version "4.0.4"
 }
 
 allprojects {
@@ -94,7 +97,7 @@ application {
 
 tasks {
 
-    val fatJar = task("createJar", type = Jar::class) {
+   /* val fatJar = task("createJar", type = Jar::class) {
         val version = "1.0-SNAPSHOT"
         archiveName = "${application.applicationName}-$version.jar"
         manifest {
@@ -103,10 +106,19 @@ tasks {
         }
         from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
         destinationDirectory.set(project.rootDir)
+    }*/
+
+    val shadowJar = named<ShadowJar>("shadowJar") {
+        archiveBaseName.set(application.applicationName)
+        mergeServiceFiles()
+        manifest {
+            attributes(mapOf("Main-Class" to application.mainClassName))
+        }
+        destinationDirectory.set(project.rootDir)
     }
 
     "build" {
-        dependsOn(fatJar)
+        dependsOn(shadowJar)
     }
 
     val stage by registering(DefaultTask::class)
@@ -115,3 +127,4 @@ tasks {
         dependsOn("clean")
     }
 }
+
