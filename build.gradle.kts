@@ -64,6 +64,11 @@ allprojects {
     }
 }
 
+sourceSets.getByName("main") {
+    java.srcDir("src/main/kotlin")
+    resources.srcDir("src/main/resource")
+}
+
 subprojects {
     version = "1.0"
 }
