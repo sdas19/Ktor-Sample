@@ -24,6 +24,7 @@ dependencies {
     implementation("ch.qos.logback:logback-classic:$logback_version")
     implementation("io.ktor:ktor-server-core:$ktor_version")
     implementation("io.ktor:ktor-server-host-common:$ktor_version")
+    implementation("io.ktor:ktor-server-netty:$ktor_version")
     implementation("org.koin:koin-ktor:$koin_version")
 
     testImplementation("io.ktor:ktor-client-mock-jvm:$ktor_version")

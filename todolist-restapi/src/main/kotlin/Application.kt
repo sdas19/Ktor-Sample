@@ -58,7 +58,7 @@ private fun getMongoClientUrlAtlas(): String {
 
 fun main(args: Array<String>) {
     startKoin { modules(todoAppAppModule) }
-    io.ktor.server.cio.EngineMain.main(args)
+    io.ktor.server.netty.EngineMain.main(args)
 }
 
 @Suppress("unused") // Referenced in application.conf

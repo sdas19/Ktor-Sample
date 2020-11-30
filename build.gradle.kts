@@ -49,6 +49,7 @@ allprojects {
         implementation("org.koin:koin-ktor:$koin_version")
         implementation ("org.mongodb:mongodb-driver:$mongo_version")
         implementation("io.ktor:ktor-server-cio:$ktor_version")
+        implementation("io.ktor:ktor-server-netty:$ktor_version")
 
         testImplementation("org.amshove.kluent:kluent:$kluent_version")
         testImplementation("org.spekframework.spek2:spek-dsl-jvm:$spek_version")
