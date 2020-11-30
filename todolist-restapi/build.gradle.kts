@@ -9,7 +9,7 @@ plugins {
 }
 
 application {
-    mainClassName = "io.ktor.server.cio.EngineMain"
+    mainClassName = "io.ktor.server.netty.EngineMain"
 }
 
 repositories {
