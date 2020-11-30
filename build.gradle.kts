@@ -102,7 +102,7 @@ application {
 
 tasks {
 
-   /* val fatJar = task("createJar", type = Jar::class) {
+    val fatJar = task("createJar", type = Jar::class) {
         val version = "1.0-SNAPSHOT"
         archiveName = "${application.applicationName}-$version.jar"
         manifest {
@@ -111,25 +111,24 @@ tasks {
         }
         from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
         destinationDirectory.set(project.rootDir)
-    }*/
+    }
 
-    val shadowJar = named<ShadowJar>("shadowJar") {
+    /*val shadowJar = named<ShadowJar>("shadowJar") {
         archiveBaseName.set(application.applicationName)
         mergeServiceFiles()
         manifest {
             attributes(mapOf("Main-Class" to application.mainClassName))
         }
         destinationDirectory.set(project.rootDir)
-    }
+    }*/
 
-    "build" {
-        dependsOn(shadowJar)
-    }
+    /*"build" {
+        dependsOn(fatJar)
+    }*/
 
     val stage by registering(DefaultTask::class)
     stage {
-        dependsOn("build")
-        dependsOn("clean")
+        dependsOn("installDist")
     }
 }
 
